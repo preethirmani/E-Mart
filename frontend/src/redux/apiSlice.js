@@ -10,7 +10,12 @@ export const apiSlice = createApi({
     getAllProducts : builder.query({
       query : () => `products`,
     }),
+    getSingleProduct : builder.query({
+      query : (id) => `products/${id}`
+    }), 
+
+
   }), 
 })
 
-export const { useGetAllProductsQuery } = apiSlice;
+export const { useGetAllProductsQuery, useGetSingleProductQuery } = apiSlice;

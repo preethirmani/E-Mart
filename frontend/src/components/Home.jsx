@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useGetAllProductsQuery } from "../redux/apiSlice";
-import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import Rating from "./Rating";
+
 import '../index.css';
+import { Link } from "react-router-dom";
 const Home = () => {
  
    const { data, error, isLoading } = useGetAllProductsQuery();
@@ -35,14 +36,27 @@ const Home = () => {
         return (
               <div className="product-card" key={product.id}>
                       <div className="product-img-container">   
-                          <img className='product-coverimage' src={product.image}/>   
+                        <Link to={`/product/${product.id}`}>
+                          <img className='product-coverimage' src={product.image}/>  
+                        </Link> 
                       </div>
                       <div className="product-info">
-                        <label>{product.title}</label>
-                        <br />
-                        <label>by {product.rating.rate}</label>
-                        <br />
+                        <Link to={`/product/${product.id}`}>
+                            <h6>{product.title}</h6>
+                        </Link>
+                      
+                        
                         <label>${product.price}</label>
+                        <br />
+                        <div>
+                          <Rating 
+                          value = {product.rating.rate}
+                          text = {`${product.rating.count} reviews`}
+                          />
+
+                        </div>
+                    
+                        
                       </div>
                 </div>
         )
