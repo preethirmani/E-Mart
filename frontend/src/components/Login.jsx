@@ -14,6 +14,7 @@ const Login = ({setToken}) => {
  
   const [errorMessage, setErrroMessage] = useState(null);
   const [loginUser] = useLoginMutation();
+  const navigate = useNavigate();
  
 
   const handleSubmit  = async (e) => {
@@ -24,8 +25,10 @@ const Login = ({setToken}) => {
 
     if(data) {
       console.log('output', data.token);
-      setToken = data.token;
+      setToken(data.token);
       setErrroMessage(null);
+      navigate('/');
+      
     } else {
       setErrroMessage(error.data.message);
     }

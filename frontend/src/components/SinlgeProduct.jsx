@@ -5,12 +5,13 @@ import Rating from './Rating';
 import {Container ,Row, Col, Image, Button, ListGroup, Form, ListGroupItem} from 'react-bootstrap'
 import '../index.css'
 
-const SinlgeProduct = () => {
+const SinlgeProduct = ( {token} ) => {
   const productId = useParams();
   console.log('productId',productId)
+  console.log('token', token);
 
   const { data, error, isLoading} = useGetSingleProductQuery(productId.id);
-  console.log('singleProductData', data)
+  console.log('singleProductData', data);
 
   return (
         <>
