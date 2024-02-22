@@ -4,7 +4,7 @@ import Rating from "./Rating";
 
 import '../index.css';
 import { Link } from "react-router-dom";
-const Home = () => {
+const Home = ({token}) => {
  
    const { data, error, isLoading } = useGetAllProductsQuery();
    console.log('data', data ? data : 'lookatloading');
