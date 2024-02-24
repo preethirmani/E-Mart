@@ -3,9 +3,18 @@ main {
   border: 2inch;
 }
 
+.form-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.form-select {
+  margin: 1rem;
+  width: 300px !important;
+}
+
 .product-container{
   margin: 1rem;
-  border: 1px solid rgb(172, 172, 177);
+
   display: flex;
   flex-wrap: wrap;
 

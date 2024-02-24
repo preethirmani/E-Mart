@@ -1,15 +1,18 @@
 import React from 'react'
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import '../index.css'
 
 
 const Navigations = () => {
+  const clickHandler = () => {
+    window.reload();
+  }
   return (
    <header>
     <Navbar bg='dark' variant='dark' expand='lg'  collapseOnSelect>
       <Container>
-        <LinkContainer to='/'>
+        <LinkContainer to='/' onClick={clickHandler}>
           <Navbar.Brand className='brandName'>eMart</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls='basic-nabar-nav' />
