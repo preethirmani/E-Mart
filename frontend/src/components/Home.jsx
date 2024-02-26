@@ -12,6 +12,7 @@ const Home = ({token}) => {
    
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortOption, setSortoption] = useState('');
+  let filteredProducts = data ? data : [];
 
   
 
@@ -20,9 +21,9 @@ const Home = ({token}) => {
    ) : null;
    
    
-   let filteredProducts = 
-                        selectedCategory && selectedCategory != 'Select a category' ? 
-                        data.filter(d => d.category == selectedCategory) : sortOption ? 
+    filteredProducts = selectedCategory && selectedCategory != 'Select a category'  ? 
+                        data.filter(d => d.category == selectedCategory) 
+                        : sortOption  && sortOption != 'Sort' ? 
                         sortProducts() : data;
 
   
@@ -31,21 +32,21 @@ const Home = ({token}) => {
     console.log('SortOptions', sortOption);
 
     if(sortOption === 'Price low - high') {
-      const newProducts = data.slice();
+      const newProducts = filteredProducts ? filteredProducts.slice() : data.slice();
       newProducts.sort((p1, p2) => {
         if(p1.price < p2.price)
           return -1
       });
       return newProducts;
     } else if(sortOption === 'Rating') {
-      const newProducts = data.slice();
+     const newProducts = filteredProducts ? filteredProducts.slice() : data.slice();
       newProducts.sort((p1, p2) => {
         if(p2.rating.rate < p1.rating.rate)
           return -1;
       });
       return newProducts;
     } else if(sortOption === 'Ascending') {
-      const newProducts = data.slice();
+     const newProducts = filteredProducts ? filteredProducts.slice() : data.slice();
       newProducts.sort((p1, p2) => {
         if(p1.title.toLowerCase() < p2.title.toLowerCase())
           return -1
@@ -53,7 +54,7 @@ const Home = ({token}) => {
       return newProducts;
     } else if(sortOption === 'Descending') {
       console.log('Inside DEscending...');
-      const newProducts = data.slice();
+     const newProducts = filteredProducts ? filteredProducts.slice() : data.slice();
       newProducts.sort((p1, p2) => {
         if(p2.title.toLowerCase() < p1.title.toLowerCase())
           return -1;

@@ -24,6 +24,7 @@ function App() {
           <Route path='/login' element={<Login setToken={setToken} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/cart/:id' element={<Cart />} />
         </Routes>
       </BrowserRouter>
       <Footer />

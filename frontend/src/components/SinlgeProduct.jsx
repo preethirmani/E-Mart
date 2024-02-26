@@ -1,5 +1,5 @@
-import React from 'react'
-import { useParams } from 'react-router'
+import React, { useState } from 'react'
+import { useNavigate, useParams } from 'react-router'
 import { useGetSingleProductQuery } from '../redux/apiSlice';
 import Rating from './Rating';
 import {Container ,Row, Col, Image, Button, ListGroup, Form, ListGroupItem} from 'react-bootstrap'
@@ -7,11 +7,19 @@ import '../index.css'
 
 const SinlgeProduct = ( {token} ) => {
   const productId = useParams();
+  const navigate = useNavigate();
+  const [qty, setQty] = useState(0);
   console.log('productId',productId)
   console.log('token', token);
 
   const { data, error, isLoading} = useGetSingleProductQuery(productId.id);
   console.log('singleProductData', data);
+
+  const clickHandler= () => {
+    console.log('qty:', qty);
+    navigate(`/cart/${productId}?qty=${qty}`);
+
+  }
 
   return (
         <>
@@ -45,13 +53,18 @@ const SinlgeProduct = ( {token} ) => {
                         <strong>
                           Quantity
                         </strong>
-                        <Form.Control as='input' className='qty-input'>
+                        <Form.Control as='input' 
+                        className='qty-input' 
+                        value={qty}
+                        onChange={(e) => setQty(e.target.value)}
+                        
+                        >
 
                         </Form.Control>
                       
                       </ListGroupItem>
                       <ListGroupItem>
-                          <Button>
+                          <Button onClick={clickHandler}>
                             AddToCart
                           </Button>
                         </ListGroupItem> 
