@@ -9,15 +9,14 @@ const SinlgeProduct = ( {token} ) => {
   const productId = useParams();
   const navigate = useNavigate();
   const [qty, setQty] = useState(0);
-  console.log('productId',productId)
-  console.log('token', token);
+ 
 
   const { data, error, isLoading} = useGetSingleProductQuery(productId.id);
-  console.log('singleProductData', data);
+  
 
   const clickHandler= () => {
-    console.log('qty:', qty);
-    navigate(`/cart/${productId}?qty=${qty}`);
+ 
+    navigate(`/cart/${productId.id}?qty=${qty}`);
 
   }
 
