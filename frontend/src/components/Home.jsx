@@ -21,10 +21,19 @@ const Home = ({token}) => {
    ) : null;
    
    
-    filteredProducts = selectedCategory && selectedCategory != 'Select a category'  ? 
-                        data.filter(d => d.category == selectedCategory) 
-                        : sortOption  && sortOption != 'Sort' ? 
-                        sortProducts() : data;
+    filteredProducts = checkFilter();
+   
+   function checkFilter() {
+      if((selectedCategory && selectedCategory != 'Select a category') && (sortOption  && sortOption != 'Sort')) {
+        return sortProducts().filter(d => d.category === selectedCategory);
+      } else if(selectedCategory && selectedCategory != 'Select a category') {
+        return data.filter(d => d.category === selectedCategory);
+      } else if(sortOption && sortOption != 'Sort') {
+        return sortProducts();
+      } else {
+        return data;
+      }
+   }
 
   
   function sortProducts() {
