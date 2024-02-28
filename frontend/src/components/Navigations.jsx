@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector } from 'react-redux';
+import { addToCart } from '../redux/cartSlice';
 import '../index.css'
 
 
 const Navigations = () => {
   const clickHandler = () => {
-    window.reload();
+   // window.reload();
   }
+ 
+  const cartItems = useSelector(state =>state.cart.cart);
+  //console.log(cartItems, typeof cartItems, cartItems.length)
+  
+
+ 
+  
   return (
    <header>
     <Navbar bg='dark' variant='dark' expand='lg'  collapseOnSelect>

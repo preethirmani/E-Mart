@@ -23,8 +23,8 @@ function App() {
           <Route path='/product/:id' element={<SinlgeProduct token={token}/>} />
           <Route path='/login' element={<Login setToken={setToken} />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/cart' element={<Cart />} />
           <Route path='/cart/:id' element={<Cart />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </BrowserRouter>
       <Footer />

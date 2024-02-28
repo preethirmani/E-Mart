@@ -1,8 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/cartSlice';
 import { Button } from 'react-bootstrap';
+
 
 
 const Cart = ({token}) => {
@@ -32,6 +33,10 @@ const Cart = ({token}) => {
       {productId , quantity }
     ]
   };
+
+  const cartItems = useSelector(state => state.cart.cart);
+
+  console.log('cartItems',cartItems, cartItems.length);
 
  
   const addToCartHandler = () => {

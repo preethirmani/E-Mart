@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Home = ({token}) => {
  
   const { data, error, isLoading } = useGetAllProductsQuery();
-  console.log(data ? data : 'loading...');
+  //console.log(data ? data : 'loading...');
    
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortOption, setSortoption] = useState('');

@@ -1,22 +1,44 @@
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import { useGetSingleProductQuery } from '../redux/apiSlice';
+import { useDispatch } from 'react-redux';
 import Rating from './Rating';
-import {Container ,Row, Col, Image, Button, ListGroup, Form, ListGroupItem} from 'react-bootstrap'
+import {Container ,Row, Col, Image, Button, ListGroup, Form, ListGroupItem} from 'react-bootstrap';
+import { addToCart } from '../redux/cartSlice';
 import '../index.css'
 
 const SinlgeProduct = ( {token} ) => {
-  const productId = useParams();
+  const params = useParams();
   const navigate = useNavigate();
-  const [qty, setQty] = useState(0);
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(0);
+  
+  const productId = params.id;
  
 
-  const { data, error, isLoading} = useGetSingleProductQuery(productId.id);
+  const { data, error, isLoading} = useGetSingleProductQuery(productId);
+
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1; 
+  const day = today.getDate();
+  const date = `${year}-${month}-${day}`;
   
 
-  const clickHandler= () => {
+  
  
-    navigate(`/cart/${productId.id}?qty=${qty}`);
+
+  const addToCartHandler = () => {
+    //Add to cart
+   
+    let products = ({productId, quantity : +quantity});
+    console.log('products.productId ', products)
+    
+
+    dispatch(addToCart(products));
+
+    //navigate(`/cart/${productId.id}?qty=${quantity}`);
 
   }
 
@@ -54,8 +76,8 @@ const SinlgeProduct = ( {token} ) => {
                         </strong>
                         <Form.Control as='input' 
                         className='qty-input' 
-                        value={qty}
-                        onChange={(e) => setQty(e.target.value)}
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
                         
                         >
 
@@ -63,7 +85,7 @@ const SinlgeProduct = ( {token} ) => {
                       
                       </ListGroupItem>
                       <ListGroupItem>
-                          <Button onClick={clickHandler}>
+                          <Button onClick={addToCartHandler}>
                             AddToCart
                           </Button>
                         </ListGroupItem> 

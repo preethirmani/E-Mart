@@ -1,15 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current, original, unwrapResult } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name : 'cart',
   initialState : {
-    cartItems : []
-  },
+    cart : []
+  } ,
   reducers : {
+    addToCart : (state, action) => {
+      const pdtToBeAdded = action.payload;
+      console.log('pdtToBeAdded', pdtToBeAdded);
+  
+      const existsIndex = state.cart.findIndex((product) =>  product.productId === pdtToBeAdded.productId  );
+      console.log('existItem', existsIndex);
 
-    addToCart(state, action ) {
-     const item = action.payload;
-     console.log(item);
+      if(existsIndex !== -1) {
+        state.cart[existsIndex].quantity += pdtToBeAdded.quantity;
+        
+      } else {
+        state.cart.push(action.payload);
+        console.log('cart after adding',current(state.cart));
+      }
     }
   }
 })
@@ -17,3 +27,6 @@ const cartSlice = createSlice({
 export default cartSlice.reducer;
 export const {addToCart} = cartSlice.actions;
 
+
+
+    
