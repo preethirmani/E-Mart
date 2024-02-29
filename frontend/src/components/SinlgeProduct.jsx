@@ -19,16 +19,6 @@ const SinlgeProduct = ( {token} ) => {
   const { data, error, isLoading} = useGetSingleProductQuery(productId);
 
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1; 
-  const day = today.getDate();
-  const date = `${year}-${month}-${day}`;
-  
-
-  
- 
-
   const addToCartHandler = () => {
     //Add to cart
    

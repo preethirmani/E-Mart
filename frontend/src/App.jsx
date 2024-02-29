@@ -12,6 +12,8 @@ import './index.css';
 
 function App() {
   const [token, setToken] = useState(null);
+  const [products, setProducts] = useState([]);
+  
  
  
   return (
@@ -19,12 +21,12 @@ function App() {
       <BrowserRouter>
         <Navigations />
         <Routes>
-          <Route path='/' element= {<Home token={token}/>} />
+          <Route path='/' element= {<Home token={token} 
+          setProducts={setProducts}/>} />
           <Route path='/product/:id' element={<SinlgeProduct token={token}/>} />
           <Route path='/login' element={<Login setToken={setToken} />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/cart/:id' element={<Cart />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/cart' element={<Cart products={products}/>} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -5,15 +5,17 @@ import Rating from "./Rating";
 
 import '../index.css';
 import { Link } from "react-router-dom";
-const Home = ({token}) => {
+const Home = ({token, setProducts}) => {
  
   const { data, error, isLoading } = useGetAllProductsQuery();
-  //console.log(data ? data : 'loading...');
+  setProducts(data);
+  
    
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortOption, setSortoption] = useState('');
   let filteredProducts = data ? data : [];
-
+  
+  
   
 
    const categories = data ? Array.from(
