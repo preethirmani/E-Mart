@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
+import {  useDispatch } from "react-redux";
 import { useGetAllProductsQuery } from "../redux/apiSlice";
+import { addToCart } from "../redux/cartSlice";
 import Rating from "./Rating";
 
 import '../index.css';
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 const Home = ({token, setProducts}) => {
  
   const { data, error, isLoading } = useGetAllProductsQuery();
-  setProducts(data);
-  
-   
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortOption, setSortoption] = useState('');
   let filteredProducts = data ? data : [];
+  const dispatch = useDispatch()
   
   
   
@@ -78,18 +79,21 @@ const Home = ({token, setProducts}) => {
     
   }
     
+const addToCartHandler = (id) => {
+  console.log(id, typeof id);
 
+
+}
 
 useEffect(() => {
-  
-},[sortOption])
+  setProducts(data);
+},[data])
   
    if (isLoading) {
     
     return(
        <div>Loading... Products are loading..</div>
     )
-   
    
   }
 
@@ -99,9 +103,7 @@ useEffect(() => {
       <div>
         Oops.Sorry..Error Loading the Products...
       </div>
-
     )
-    
   }
 
   return (
@@ -155,6 +157,7 @@ useEffect(() => {
                                 text = {`${product.rating.count} reviews`}
                                 />
                               </div>
+                            
                             </div>
                       </div>
              )

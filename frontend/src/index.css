@@ -69,10 +69,19 @@ main {
 /** Cart **/
 .cart-col{
   
-  margin-left: 1rem;
+ margin-left: 2px;
   margin-top: 1rem !important;
 }
 
 .checkout-btn {
   border-radius: 5%;
+  background-color: #ff8d00 !important;
+}
+
+.cart-link{
+  color: rgb(13, 113, 200);
+}
+
+.updateCart-div{
+  border: 1px solid grey;
 }

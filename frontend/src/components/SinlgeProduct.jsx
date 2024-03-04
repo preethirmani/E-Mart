@@ -13,7 +13,7 @@ const SinlgeProduct = ( {token} ) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
   
-  const productId = params.id;
+  const productId = + params.id;
  
 
   const { data, error, isLoading} = useGetSingleProductQuery(productId);
@@ -23,7 +23,7 @@ const SinlgeProduct = ( {token} ) => {
     //Add to cart
    
     let products = ({productId, quantity : +quantity});
-    console.log('products.productId ', products)
+    
     
 
     dispatch(addToCart(products));
@@ -64,6 +64,7 @@ const SinlgeProduct = ( {token} ) => {
                         <strong>
                           Quantity
                         </strong>
+                        
                         <Form.Control as='input' 
                         className='qty-input' 
                         value={quantity}
