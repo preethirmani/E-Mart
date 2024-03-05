@@ -59,27 +59,34 @@ const SinlgeProduct = ( {token} ) => {
                       <ListGroupItem>
                       <strong>Price : </strong> ${data.price}
                       </ListGroupItem>
-                      <ListGroupItem>{data.description}</ListGroupItem>  
-                      <ListGroupItem>
-                        <strong>
-                          Quantity
-                        </strong>
-                        
-                        <Form.Control as='input' 
-                        className='qty-input' 
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                        
-                        >
+                      <ListGroupItem>{data.description}</ListGroupItem> 
+                       { 
+                         token && 
+                          <>
+                            <ListGroupItem>
+                              <strong>
+                                Quantity
+                              </strong>
+                              
+                            <Form.Control as='input' 
+                            className='qty-input' 
+                            value={quantity}
+                            onChange={(e) => setQuantity(e.target.value)}>
 
-                        </Form.Control>
-                      
-                      </ListGroupItem>
-                      <ListGroupItem>
-                          <Button onClick={addToCartHandler}>
-                            AddToCart
-                          </Button>
-                        </ListGroupItem> 
+                            </Form.Control>
+                         
+                          
+                          </ListGroupItem>
+                          <ListGroupItem>
+                              <Button onClick={addToCartHandler}>
+                                AddToCart
+                              </Button>
+                            </ListGroupItem> 
+                          </>
+                         
+                       }
+                          
+                        
                     </ListGroup>
                   </Col>
                 </Row>

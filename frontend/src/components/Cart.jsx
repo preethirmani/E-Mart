@@ -69,7 +69,7 @@ const Cart = ({token, products}) => {
           <Card>
              <h4>Shopping Cart</h4>
              {
-              cartDetails.length === 0 
+              cartDetails.length <= 0 
               ? (<div>Cart is empty</div>)
               : (
                 <ListGroup variant='flush'>

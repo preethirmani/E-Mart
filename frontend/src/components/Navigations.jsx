@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector } from 'react-redux';
 import { addToCart } from '../redux/cartSlice';
 import '../index.css'
 
 
-const Navigations = () => {
-  const clickHandler = () => {
-   // window.reload();
+const Navigations = (props) => {
+  const logoutHandler = () => {
+    props.setToken(null);
   }
  
   const cartItems = useSelector(state =>state.cart.cart);
@@ -21,26 +21,44 @@ const Navigations = () => {
    <header>
     <Navbar bg='dark' variant='dark' expand='lg'  collapseOnSelect>
       <Container>
-        <LinkContainer to='/' onClick={clickHandler}>
+        <LinkContainer to='/'>
           <Navbar.Brand className='brandName'>eMart</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls='basic-nabar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='ms-auto'>
-            <LinkContainer to='/cart'>
-              <Nav.Link>
-                <i className="fa-solid fa-cart-shopping"></i>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/login'>
-              <Nav.Link>Login</Nav.Link>
-            </LinkContainer>
-             <LinkContainer to='/register'>
-              <Nav.Link>Register</Nav.Link>
-            </LinkContainer>
-
-          </Nav>
-        </Navbar.Collapse>
+       
+           
+           {
+              props.token ? 
+              (
+                <Navbar.Collapse id='basic-navbar-nav'>
+                  <Nav className='ms-auto'>
+                    <LinkContainer to='/cart'>
+                      <Nav.Link >
+                        <i className="fa-solid fa-cart-shopping"></i>
+                      </Nav.Link>
+                    </LinkContainer>
+                    <NavDropdown title={props.userinfo}>
+                      <NavDropdown.Item>Account</NavDropdown.Item>
+                      <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+                    </NavDropdown>
+                  </Nav>
+                </Navbar.Collapse>
+              ) 
+              : (
+                  <Navbar.Collapse>
+                     <Nav className='ms-auto'>
+                      
+                        <LinkContainer to='/login'>
+                          <Nav.Link>Login</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to='register'>
+                          <Nav.Link>Register</Nav.Link>
+                        </LinkContainer>
+                   
+                    </Nav>
+                  </Navbar.Collapse>
+              )
+           }
       </Container>
     </Navbar>
    </header>

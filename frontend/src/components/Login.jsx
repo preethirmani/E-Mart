@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../index.css';
-import { useLoginMutation } from '../redux/apiSlice';
+import { useLoginMutation, useGetAllUsersQuery } from '../redux/apiSlice';
 
 
 
-const Login = ({setToken}) => {
+const Login = ({setToken, setUserinfo}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
  
@@ -26,7 +26,12 @@ const Login = ({setToken}) => {
     if(data) {
       console.log('output', data.token);
       setToken(data.token);
+      setUserinfo(username);
+      
       setErrroMessage(null);
+     // checkuser();
+     
+
       navigate('/');
       
     } else {
@@ -34,7 +39,20 @@ const Login = ({setToken}) => {
     }
    
   }
-  
+  const checkuser = async () => {
+    try{
+      const result = await fetch('https://fakestoreapi.com/users');
+      const allUsers = await result.json();
+     
+      const onlineUser = allUsers.find(user => user.username === username );
+    
+      setLoggedinUser(onlineUser);
+
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
   return(
     <>
       <h1>Login</h1>

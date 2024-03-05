@@ -27,13 +27,14 @@ export const apiSlice = createApi({
         method : 'POST',
         body
       })
-
     }),
-
+    getAllUsers : builder.query({
+      query : () => `users`,
+    }),
 
 
   }), 
 })
 
 export const { useGetAllProductsQuery, useGetSingleProductQuery,
-  useRegisterMutation, useLoginMutation } = apiSlice;
+  useRegisterMutation, useLoginMutation, useGetAllUsersQuery } = apiSlice;
