@@ -27,55 +27,47 @@ const Login = ({setToken, setUserinfo}) => {
       console.log('output', data.token);
       setToken(data.token);
       setUserinfo(username);
-      
-      setErrroMessage(null);
-     // checkuser();
-     
-
+      clearError()
       navigate('/');
-      
     } else {
-      setErrroMessage(error.data.message);
+    
+      setErrroMessage(error.data);
+      
     }
    
   }
-  const checkuser = async () => {
-    try{
-      const result = await fetch('https://fakestoreapi.com/users');
-      const allUsers = await result.json();
-     
-      const onlineUser = allUsers.find(user => user.username === username );
-    
-      setLoggedinUser(onlineUser);
 
-    } catch(error) {
-      console.log(error);
-    }
+  const clearError = () => {
+    setErrroMessage(null);
   }
-
+ 
   return(
     <>
       <h1>Login</h1>
-      {(errorMessage) && <div>{errorMessage}</div>}
+     {errorMessage && <div className='danger'>{errorMessage}</div>}
       <div className="login-container">  
-          <Form>
+          <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="text" 
+              <Form.Control type="text" required
               placeholder="Enter username"
               value={username} name='username'
-              onChange={(e) => setUsername(e.target.value)} />
+              onChange={(e) => {
+              clearError();
+              setUsername(e.target.value)}} />
               
           </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" 
+                <Form.Control type="password" required
                 placeholder="Password" value={password} 
-                name='password' onChange={(e) => setPassword(e.target.value)} />
+                name='password' onChange={(e) => {
+                                                  clearError();
+                                                  setPassword(e.target.value)}} />
             </Form.Group>
 
-          <Button variant="primary" onClick={handleSubmit}
+          <Button variant="primary" 
            type="submit">
             Submit
           </Button>

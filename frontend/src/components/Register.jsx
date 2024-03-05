@@ -51,11 +51,12 @@ const Register = () => {
     <>
         <div className='register-container'>
           <h1>Register</h1>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" >
                 <Form.Label>FirstName</Form.Label>
                 <Form.Control type="text" 
                 placeholder="Enter First Name"
+                required
                 value={userInfo.firstname} 
                 onChange={(e) => setUserInfo({ ...userInfo, firstname : e.target.value })}
                   />
@@ -64,6 +65,7 @@ const Register = () => {
                 <Form.Label>LastName</Form.Label>
                 <Form.Control type="text" 
                 placeholder="Enter Last Name" 
+                required
                 value={userInfo.lastname} 
                 onChange={(e) => setUserInfo({ ...userInfo, lastname : e.target.value })}/>
               </Form.Group>
@@ -72,6 +74,7 @@ const Register = () => {
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" 
                 placeholder="Enter Username" 
+                required
                 value={userInfo.username} 
                 onChange={(e) => setUserInfo({ ...userInfo, username : e.target.value })}/>
               </Form.Group>
@@ -82,6 +85,7 @@ const Register = () => {
               <Form.Control type="email" 
               placeholder="Enter email"  
               value={userInfo.email} 
+              required
               onChange={(e) => setUserInfo({ ...userInfo, email : e.target.value })}/>
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
@@ -92,6 +96,7 @@ const Register = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" 
               placeholder="Password" value={userInfo.password}
+              required
               onChange={(e) => setUserInfo({ ...userInfo, password : e.target.value })} />
             </Form.Group>
 
@@ -99,6 +104,7 @@ const Register = () => {
                 <Form.Label>City</Form.Label>
                 <Form.Control type="text" 
                 placeholder="Enter City" 
+                required
                 value={userInfo.address.city} 
                 onChange={(e) => 
                   setUserInfo({ ...userInfo, 
@@ -112,6 +118,7 @@ const Register = () => {
                 <Form.Control type="text" 
                 placeholder="Enter Street" 
                 value={userInfo.address.street} 
+                required
                 onChange={(e) => 
                   setUserInfo({ ...userInfo,
                               address : {
@@ -123,6 +130,7 @@ const Register = () => {
                 <Form.Label>Door Number</Form.Label>
                 <Form.Control type="text" 
                 placeholder="Enter House Number" 
+                required
                 value={userInfo.address.number} 
                 onChange={(e) =>
                    setUserInfo({ ...userInfo, 
@@ -135,6 +143,7 @@ const Register = () => {
                 <Form.Label>Zipcode</Form.Label>
                 <Form.Control type="text" 
                 placeholder="Enter Zipcode" 
+                required
                 value={userInfo.address.zipcode} 
                 onChange={(e) => 
                    setUserInfo({ ...userInfo, 
@@ -147,12 +156,12 @@ const Register = () => {
                 <Form.Label>Phone</Form.Label>
                 <Form.Control type="text" 
                 placeholder="Enter Phone" 
+                required
                 value={userInfo.phone} 
                 onChange={(e) => setUserInfo({...userInfo, phone :  e.target.value})}/>
               </Form.Group>
            
             <Button variant="primary" 
-            onClick={handleSubmit}
             type="submit">
               Submit
             </Button>

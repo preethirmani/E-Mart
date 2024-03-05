@@ -85,3 +85,8 @@ main {
 .updateCart-div{
   border: 1px solid grey;
 }
+
+
+.danger {
+  color : red;
+}
