@@ -3,12 +3,23 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../index.css';
+import { Provider } from 'react-redux'
+//import '../index.css';
 import { useLoginMutation, useGetAllUsersQuery } from '../redux/apiSlice';
 
 
+const ReduxProvider = ({ children, reduxStore }) => (
+  <Provider store={reduxStore}>{children}</Provider>
+)
 
 const Login = ({setToken, setUserinfo}) => {
+  const store = configureStore();
+  const wrapper = ({ children }) => (
+    <ReduxProvider reduxStore={store}>{children}</ReduxProvider>
+  );
+  const { result } = renderHook(() => {
+    useSaveAuthenticationDataToStorages(useDispatch());
+  }, { wrapper });
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
  

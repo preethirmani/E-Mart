@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
 import { useRegisterMutation } from '../redux/apiSlice';
 
-import '../index.css';
+
+//import '../index.css';
 
 
 
 const Register = () => {
    
-  const navigate = useNavigate();
+ 
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
