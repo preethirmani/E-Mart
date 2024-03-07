@@ -4,13 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Provider } from 'react-redux'
-//import '../index.css';
+import '../index.css';
 import { useLoginMutation, useGetAllUsersQuery } from '../redux/apiSlice';
 
 
-const ReduxProvider = ({ children, reduxStore }) => (
-  <Provider store={reduxStore}>{children}</Provider>
-)
+
 
 const Login = ({setToken, setUserinfo}) => {
 
