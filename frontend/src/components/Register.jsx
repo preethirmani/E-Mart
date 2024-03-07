@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useRegisterMutation } from '../redux/apiSlice';
-
-
-//import '../index.css';
+import '../index.css';
 
 
 

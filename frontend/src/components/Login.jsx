@@ -13,13 +13,7 @@ const ReduxProvider = ({ children, reduxStore }) => (
 )
 
 const Login = ({setToken, setUserinfo}) => {
-  const store = configureStore();
-  const wrapper = ({ children }) => (
-    <ReduxProvider reduxStore={store}>{children}</ReduxProvider>
-  );
-  const { result } = renderHook(() => {
-    useSaveAuthenticationDataToStorages(useDispatch());
-  }, { wrapper });
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
  
