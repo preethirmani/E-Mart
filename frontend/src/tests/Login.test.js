@@ -13,8 +13,7 @@ import "@testing-library/jest-dom";
 
 
 describe("Login Component", () => {
-  test('renders correctly with mock store',() => {
-   
+  test('renders correctly with mock store',() => {  
     render(
       <BrowserRouter>
         <Provider store={mockStore}>

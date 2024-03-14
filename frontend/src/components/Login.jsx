@@ -30,6 +30,7 @@ const Login = ({setToken, setUserinfo}) => {
       console.log('output', data.token);
       setToken(data.token);
       setUserinfo(username);
+     // localStorage.setItem('user',username);
       clearError()
       navigate('/');
     } else {

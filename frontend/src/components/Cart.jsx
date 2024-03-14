@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Row,Button, Col, Card, ListGroup, Image, ListGroupItem } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
@@ -14,6 +15,7 @@ const Cart = ({token, products}) => {
   const cart= useSelector(state => state.cart.cart);
   const dispatch = useDispatch();
   const [qty, setQty] = useState(0);
+  const navigate = useNavigate();
   
   let cartDetails = [];
 
@@ -59,6 +61,9 @@ const Cart = ({token, products}) => {
 
   console.log('cartItems', cartDetails);
 
+  const checkoutHandler = () => {
+    navigate('/checkout');
+  }
 
 
   return (
@@ -134,7 +139,8 @@ const Cart = ({token, products}) => {
                     </h5>
                   </ListGroupItem>
                   <ListGroupItem>
-                    <Button size='sm' className='checkout-btn' variant='warning'>Proceed to CheckOut</Button>
+                    <Button size='sm' className='checkout-btn' 
+                    variant='warning' onClick={checkoutHandler}>Proceed to CheckOut</Button>
                   </ListGroupItem>
                 </ListGroup>     
               </Card>

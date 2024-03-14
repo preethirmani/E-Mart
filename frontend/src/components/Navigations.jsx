@@ -4,18 +4,23 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector } from 'react-redux';
 import { addToCart } from '../redux/cartSlice';
 import '../index.css'
+import { useNavigate } from 'react-router';
 
 
 const Navigations = (props) => {
-  const logoutHandler = () => {
-    props.setToken(null);
-  }
+  
  
   const cartItems = useSelector(state =>state.cart.cart);
-  //console.log(cartItems, typeof cartItems, cartItems.length)
+  const navigate = useNavigate();
   
+  //console.log(cartItems, typeof cartItems, cartItems.length)
+  //console.log('username from localstorage', localStorage.getItem('user'));
 
- 
+  const logoutHandler = () => {
+    props.setToken(null);
+    //localStorage.setItem('cart','')
+    navigate('/');
+  }
   
   return (
    <header>

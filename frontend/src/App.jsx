@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Cart from './components/Cart';
 import Footer from './components/Footer';
+import Checkout from './components/Checkout';
 
 import './index.css';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/login' element={<Login setToken={setToken} setUserinfo={setUserinfo} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/cart' element={<Cart products={products}/>} />
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
       </BrowserRouter>
       <Footer />
