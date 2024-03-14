@@ -16,18 +16,11 @@ const Cart = ({token, products}) => {
   const dispatch = useDispatch();
   const [qty, setQty] = useState(0);
   const navigate = useNavigate();
+  console.log('Products at Cart page::', products)
   
   let cartDetails = [];
-
-
-
   useEffect(() => {
-   
-
   },[cart ])
-
-   
-    
         cart.forEach(element => {
         const item = products.find(product => product.id == element.productId);
         const newItem = {

@@ -18,7 +18,7 @@ const Navigations = (props) => {
 
   const logoutHandler = () => {
     props.setToken(null);
-    //localStorage.setItem('cart','')
+    
     navigate('/');
   }
   

@@ -1,11 +1,11 @@
 main {
   min-height: 80vh;
   border: 2inch;
+
 }
 
 .form-container{
-  display: flex;
-  flex-wrap: wrap;
+ 
 }
 .form-select {
   margin: 1rem;
@@ -95,3 +95,31 @@ main {
 .danger {
   color : red;
 } 
+
+/* Checkout Page */
+
+.checkout-div {
+  margin: 10px;
+  padding: 10px;
+}
+.checkout-Column {
+  margin-left: 10px;
+  border: 1px solid grey;
+}
+
+.checkout-city-div {
+  
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.checkout-row-div {
+  
+  padding-top: 10px;
+}
+
+.payment-Btn {
+  background-color: rgb(47, 47, 234) !important;
+}
+

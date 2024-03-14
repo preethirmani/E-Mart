@@ -30,7 +30,7 @@ function App() {
           <Route path='/login' element={<Login setToken={setToken} setUserinfo={setUserinfo} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/cart' element={<Cart products={products}/>} />
-          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/checkout' element={<Checkout products={products} />} />
         </Routes>
       </BrowserRouter>
       <Footer />
