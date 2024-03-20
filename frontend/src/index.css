@@ -96,11 +96,19 @@ main {
   color : red;
 } 
 
+.success {
+  color: green;
+}
+
 /* Checkout Page */
 
 .checkout-div {
   margin: 10px;
   padding: 10px;
+}
+
+.form-container {
+  border: 1px solid grey;
 }
 .checkout-Column {
   margin-left: 10px;
@@ -121,5 +129,9 @@ main {
 
 .payment-Btn {
   background-color: rgb(47, 47, 234) !important;
+}
+
+.checkout-frm-ctrl {
+  margin: 10px;
 }
 

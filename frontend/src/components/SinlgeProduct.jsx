@@ -14,8 +14,6 @@ const SinlgeProduct = ( {token} ) => {
   const [quantity, setQuantity] = useState(0);
   
   const productId = + params.id;
- 
-
   const { data, error, isLoading} = useGetSingleProductQuery(productId);
 
 
@@ -23,15 +21,17 @@ const SinlgeProduct = ( {token} ) => {
     //Add to cart
    
     let products = ({productId, quantity : +quantity});
-    
-    
 
     dispatch(addToCart(products));
+    window.alert('Item added successfully!');
 
     //navigate(`/cart/${productId.id}?qty=${quantity}`);
 
   }
 
+  const checkoutHandler = () => {
+    navigate(`/checkout`)
+  }
   return (
         <>
           {
@@ -72,21 +72,16 @@ const SinlgeProduct = ( {token} ) => {
                             className='qty-input' 
                             value={quantity}
                             onChange={(e) => setQuantity(e.target.value)}>
-
                             </Form.Control>
-                         
-                          
                           </ListGroupItem>
                           <ListGroupItem>
                               <Button onClick={addToCartHandler}>
                                 AddToCart
                               </Button>
                             </ListGroupItem> 
+
                           </>
-                         
                        }
-                          
-                        
                     </ListGroup>
                   </Col>
                 </Row>

@@ -43,7 +43,7 @@ const Navigations = (props) => {
                       </Nav.Link>
                     </LinkContainer>
                     <NavDropdown title={props.userinfo}>
-                      <NavDropdown.Item>Account</NavDropdown.Item>
+                     
                       <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                     </NavDropdown>
                   </Nav>

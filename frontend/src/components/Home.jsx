@@ -130,8 +130,8 @@ useEffect(() => {
                 <option>Sort</option>
                 <option>Price low - high</option>
                 <option> Rating  </option>
-                <option> Ascending </option>
-                <option> Descending </option>
+                <option> Name - Ascending </option>
+                <option> Name - Descending </option>
              
           </Form.Select>
           </div>
