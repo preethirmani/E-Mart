@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useRegisterMutation } from '../redux/apiSlice';
+import { useNavigate } from 'react-router';
 import '../index.css';
 
 
@@ -11,6 +12,7 @@ const Register = () => {
  
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const navigate = useNavigate();
 
   const[userInfo, setUserInfo] = useState({
     firstname : '',
@@ -40,10 +42,10 @@ const Register = () => {
       setErrorMessage(error);
       console.log(error);
     } else {
-      console.log('Registered!!',data);
+      window.alert('User Registered Successfully!');
     }
    
-  //  navigate('/login');
+    
   }
   return(
     <>
